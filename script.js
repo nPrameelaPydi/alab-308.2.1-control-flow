@@ -6,91 +6,102 @@
 //The plants double in number every week.
 
 const PI = 3.1415;
-let radius = 5
+let radius = 5;
 const area = PI * radius * radius;
-let minSpace_for_aPlant = 0.8;
+let space_for_a_plant = 0.8;
 let numOfPlants = 20;
-let speedOfGrowth = 2;
-maxPlants = (area / minSpace_for_aPlant);
-console.log(maxPlants);
-let numOfWeeks = 1;
 
 let eightyPercent = area * 80 / 100;
-
 let fiftyPercent = area * 50 / 100;
-let totalPlants = numOfPlants;
-totalarea = totalPlants * 0.8;
 
+let numOfWeeks = 1;
+let totalPlants = numOfPlants * 2 ** (numOfWeeks - 1);
+totalAreaReq = totalPlants * 0.8;
 
-numOfWeeks = 1;
-console.log(`Number of weeks: ${numOfWeeks}`);
-if (numOfWeeks <= 1) {
-    console.log("Planted. There is room to plant more plants.");
-}
+console.log(`Maximum capacity: ${eightyPercent}sqft
+Moderate capacity: ${fiftyPercent}sqft`)
 
-numOfWeeks = 2;
-console.log(`Number of weeks: ${numOfWeeks}`);
-totalPlants = numOfPlants * Math.pow(2, (numOfWeeks - 1));
-totalarea = totalPlants * 0.8;
-if (totalarea >= eightyPercent) {
-    console.log("Prune. Growth exceeds 80% of max capacity.");
-} else if (eightyPercent < totalarea <= fiftyPercent) {
-    console.log("Monitored. Growth is at an acceptable rate.");
+console.log(`--- Week 1 ---`);
+if (totalAreaReq > eightyPercent) {
+    console.log(`Pruned, stop plants from exceeding the capacity of the garden.
+Total Plants: ${totalPlants}
+Total Area Required: ${totalAreaReq}sqft`)
+} else if (totalAreaReq < eightyPercent && totalAreaReq >= fiftyPercent) {
+    console.log(`Monitored, plants are growing at an acceptable rate.
+Total Plants: ${totalPlants}
+Total Area Required: ${totalAreaReq}sqft`)
 } else {
-    console.log("Planted. There is room to plant more plants.");
+    console.log(`Planted, there is room to plant more plants.
+Total Plants: ${totalPlants}
+Total Area Required: ${totalAreaReq}sqft`)
 }
 
-numOfWeeks = 3;
-console.log(`Number of weeks: ${numOfWeeks}`);
-totalPlants = numOfPlants * Math.pow(2, (numOfWeeks - 1));
-totalarea = totalPlants * 0.8;
-if (totalarea >= eightyPercent) {
-    console.log("Prune. Growth exceeds 80% of max capacity.");
-} else if (eightyPercent < totalarea <= fiftyPercent) {
-    console.log("Monitored. Growth is at an acceptable rate.");
+console.log(`--- Week 2 ---`);
+numOfWeeks += 1;
+totalPlants = numOfPlants * 2 ** (numOfWeeks - 1);
+totalAreaReq = totalPlants * 0.8;
+if (totalAreaReq > eightyPercent) {
+    console.log(`Pruned, stop plants from exceeding the capacity of the garden. 
+Total Plants: ${totalPlants}
+Total Area Required: ${totalAreaReq}sqft`)
+} else if (totalAreaReq < eightyPercent && totalAreaReq >= fiftyPercent) {
+    console.log(`Monitored, plants are growing at an acceptable rate. 
+Total Plants: ${totalPlants} 
+Total Area Required: ${totalAreaReq}sqft`)
 } else {
-    console.log("Planted. There is room to plant more plants.");
+    console.log(`Planted, there is room to plant more plants. 
+Total Plants: ${totalPlants}
+Total Area Required: ${totalAreaReq}sqft`)
+}
+
+console.log(`--- Week 3 ---`);
+numOfWeeks += 1;
+totalPlants = numOfPlants * 2 ** (numOfWeeks - 1);
+totalAreaReq = totalPlants * 0.8;
+if (totalAreaReq > eightyPercent) {
+    console.log(`Pruned, stop planting from exceeding the capacity of the garden. 
+Total Plants: ${totalPlants} 
+Total Area Required: ${totalAreaReq}sqft `)
+} else if (totalAreaReq < eightyPercent && totalAreaReq >= fiftyPercent) {
+    console.log(`Monitored, plants are growing at an acceptable rate.
+Total Plants: ${totalPlants} 
+Total Area Required: ${totalAreaReq}sqft`)
+} else {
+    console.log(`Planted, there is room to plant more plants.
+Total Plants: ${totalPlants} 
+Total Area Required: ${totalAreaReq}sqft`)
+}
+
+//part-2-----------
+console.log(`                                    `)
+console.log(`Part-2`)
+console.log(`*************`)
+numOfPlants = 100;
+numOfWeeks = 10;
+totalPlants = numOfPlants * 2 ** (numOfWeeks - 1);
+totalAreaReq = totalPlants * 0.8;
+console.log(`The amount of additional space that would be required if the scientists were to start with 100 plants, and did not prune them for 10 weeks : ${totalAreaReq}sqft
+Starting with 100 as initial count & counting week-1 as week-0, by the end of 10 weeks total number of plants: ${totalPlants} plants.
+Total required area: ${space_for_a_plant}*${totalPlants} = ${totalAreaReq}sqft`);
+
+
+//part-3------------
+console.log(`                             `)
+console.log(`Part 3`)
+console.log(`***************`);
+numOfPlants = 100;
+totalAreaReq = totalPlants * 0.8;
+try {
+    if (totalAreaReq > eightyPercent) {
+        throw "Error - `Plants exceeds 80% of the area available";
+    }
+} catch (error) {
+    console.log(`Pruned, stop plants from exceeding the capacity of the garden. Total area occupied exceeds the "Total available area".`);
 }
 
 
 
 
-
-
-
-
-
-
-
-
-
-//console.log(totalarea);
-
-//totalarea = numOfPlants *Math.pow(speedOfGrowth, numOfWeeks) *0.8
-
-//20 * 8 * 0.8
-
-
-
-
-
-
-
-
-//console.log(`Number of weeks: ${numOfWeeks}`);
-
-
-
-//numOfWeeks = 2;
-//console.log(`Number of weeks: ${numOfWeeks}`);
-
-//if ((totalNumOfPlants * 80 / 100) >= maxPlants) {
-//    console.log("Prune. Growth exceeds 80% of max capacity");
-//} else if (maxPlants < (totalNumOfPlants * 80 / 100) && maxPlants >= (totalNumOfPlants * 50 / 100)) {
-//    console.log("Monitored. Growth is at an acceptable rate");
-//} else if (maxPlants < (totalNumOfPlants * 50 / 100)) {
-//    console.log("Planted. There is room to plant more plants.");
-//}
 
 
 
